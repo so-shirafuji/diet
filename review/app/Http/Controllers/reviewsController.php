@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Message;    // add
+use App\review;    // add
 
 
 class reviewsController extends Controller
@@ -48,7 +48,17 @@ class reviewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $review = new review;
+        $review->name = $request->name;
+        $review->weight = $request->weight;
+        $review->morning = $request->morning;
+        $review->lunch = $request->lunch;
+        $review->dinner= $request->dinner;
+        $review->content = $request->content;
+        $review->save();
+       
+       return redirect('/');
+
     }
 
     /**
@@ -90,7 +100,16 @@ class reviewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $review = review::find($id);
+        $review->name = $request->name;
+        $review->weight = $request->weight;
+        $review->morning = $request->morning;
+        $review->lunch = $request->lunch;
+        $review->dinner= $request->dinner;
+        $review->content = $request->content;
+        $review->save();
+        
+        return redirect('/');
     }
 
     /**
@@ -101,6 +120,10 @@ class reviewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $review = review::find($id);
+        $review->delete();
+
+        return redirect('/');
+
     }
 }
