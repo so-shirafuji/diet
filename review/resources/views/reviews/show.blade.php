@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <th>体重</th>
-            <td>{{ $review->weight }}</td>
+            <td>{{ $review->weight }} kg</td>
         </tr>
         <tr>
             <th>朝食</th>
